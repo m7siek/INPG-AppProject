@@ -1,0 +1,185 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+using Windows.Phone.Devices.Notification;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Popups;
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
+
+namespace circlevdsquare
+{
+
+    public sealed partial class MainPage : Page
+    {
+        public MainPage()
+        {
+            this.InitializeComponent();
+
+            this.NavigationCacheMode = NavigationCacheMode.Required;
+
+            this.print();
+
+
+        }
+
+
+        int position;
+        int host;           // określa gracza 
+        int[] table ;
+        int counter=0;
+
+        BitmapImage circle, cross;
+
+        public void sign()
+        { 
+            circle = new BitmapImage();
+            circle.UriSource = new Uri("ms-appx:///Assets/circle.jpg");
+
+            cross = new BitmapImage();
+            cross.UriSource = new Uri("ms-appx:///Assets/cross.jpg") ;
+        }
+
+
+        public async void myPosition(object sender, TappedRoutedEventArgs e)
+        {
+
+
+            VibrationDevice Vib;
+            Vib = VibrationDevice.GetDefault();
+
+            Vib.Vibrate(TimeSpan.FromSeconds(0.3));
+
+            double x = e.GetPosition(null).X;
+            double y = e.GetPosition(null).Y;
+
+            string x_position = x.ToString();
+            string y_position = y.ToString();
+
+            position = 0;
+
+            if (x < (50 + 97) && x > 50)
+            {
+                if (y < (245 + 100) && y > 245) position = 1;
+                if (y < (360 + 100) && y > 360) position = 4;
+                if (y < (479 + 100) && y > 470) position = 7;
+
+            }
+
+            if (x < (160 + 97) && x > 160)
+            {
+                if (y < (245 + 100) && y > 245) position = 2;
+                if (y < (360 + 100) && y > 360) position = 5;
+                if (y < (470 + 100) && y > 470) position = 8;
+
+            }
+
+            if (x < (270 + 97) && x > 270)
+            {
+                if (y < (245 + 100) && y > 245) position = 3;
+                if (y < (360 + 100) && y > 360) position = 6;
+                if (y < (470 + 100) && y > 470) position = 9;
+
+            }
+
+
+            if (position != 0)
+            {
+                MessageDialog Dlg = new MessageDialog("x = " + x_position + "\ny = " + y_position + "\nposition: " + position + "\n" + table[counter]);
+
+                await Dlg.ShowAsync();
+
+                table[counter] = position;
+                counter++;
+
+            }
+
+            print();
+            host = (host+1) % 2;
+        }
+
+
+        public void print()
+        {
+
+            if (host == 0)
+            {
+                switch (position)
+                {
+                    case 1: one.Source = circle;
+                        break;
+                    case 2: two.Source = circle;
+                        break;
+                    case 3: three.Source = circle;
+                        break;
+                    case 4: four.Source = circle;
+                        break;
+                    case 5: five.Source = circle;
+                        break;
+                    case 6: six.Source = circle;
+                        break;
+                    case 7: seven.Source = circle;
+                        break;
+                    case 8: eight.Source = circle;
+                        break;
+                    case 9: nine.Source = circle;
+                        break;
+                }
+              
+            }
+
+            else if (host == 1)
+            {
+                switch (position)
+                {
+                    case 1: one.Source = cross;
+                        break;
+                    case 2: two.Source = cross;
+                        break;
+                    case 3: three.Source = cross;
+                        break;
+                    case 4: four.Source = cross;
+                        break;
+                    case 5: five.Source = cross;
+                        break;
+                    case 6: six.Source = cross;
+                        break;
+                    case 7: seven.Source = cross;
+                        break;
+                    case 8: eight.Source = cross;
+                        break;
+                    case 9: nine.Source = cross;
+                        break;
+                }
+              
+            }
+
+        }
+
+
+
+
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            sign();
+            print();
+           table = new int [9] ;
+
+            Tapped += myPosition ;
+
+        }
+    }
+}
