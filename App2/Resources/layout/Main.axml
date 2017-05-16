@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <AbsoluteLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/InputWindowLayout"
+        android:layout_marginBottom="0.0dp"
+        android:layout_marginTop="0.0dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/InputTextView"
+            android:hint="Wprowadź tekst"
+            android:clickable="true"
+            android:onClick="@android:string/copy"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Test"
+            android:textSize="30sp"
+            android:textStyle="normal" />
+        <Button
+            android:text="Q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonQ"
+            android:clickable="true" />
+    </AbsoluteLayout>
+</LinearLayout>

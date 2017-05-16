@@ -1,0 +1,4 @@
+CryptMe.MainActivity, App2;md55f8c1d2093dc5cc7a6b36bccae774892.MainActivity
+CryptMe.MainActivity, App2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md55f8c1d2093dc5cc7a6b36bccae774892.MainActivity
+CryptMe.MainActivity;md55f8c1d2093dc5cc7a6b36bccae774892.MainActivity
+cryptme.MainActivity;md55f8c1d2093dc5cc7a6b36bccae774892.MainActivity
