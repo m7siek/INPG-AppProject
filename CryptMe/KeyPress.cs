@@ -18,9 +18,13 @@ namespace CryptMe
         public static string ModifyString(Button sender, string text)
         {
 
-            if (sender.Id == Resource.Id.buttonSpace) return text+" ";
-            else if (sender.Id == Resource.Id.buttonBSP) return text.Remove(text.Length - 1);
-            else return text+sender.Text;
+            if (sender.Id == Resource.Id.buttonSpace) return text + " ";
+            else if (sender.Id == Resource.Id.buttonBSP)
+            {
+                if (text.Length != 0) return text.Remove(text.Length - 1);
+                return text;
+            }
+            else return text + sender.Text;
         }
     }
 }

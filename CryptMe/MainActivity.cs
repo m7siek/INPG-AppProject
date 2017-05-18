@@ -20,9 +20,10 @@ namespace CryptMe
 
             TextView inputTextView = FindViewById<TextView>(Resource.Id.InputTextView);
 
-            string inputtext = inputTextView.Text;
+            //string inputtext = inputTextView.Text;
 
             var buttons = new Button[40];
+            bool SwitchPressed = false;
 
             // Declare handle and behaviour for axml buttons
             for (int i = 0; i < 40; i++)
@@ -43,14 +44,36 @@ namespace CryptMe
                 buttons[i] = (Button)FindViewById<Button>(resID);
 
                 Button activebutton = buttons[i];
-                
+
 
                 if (i >= 0 && i <= 37)
                 {
-                    
+
                     buttons[i].Click += (object sender, EventArgs e) =>
                     {
-                        inputTextView.Text = KeyPress.ModifyString(activebutton,inputTextView.Text);
+                        inputTextView.Text = KeyPress.ModifyString(activebutton, inputTextView.Text);
+                    };
+                }
+                else if (i == 38)
+                {
+                    buttons[i].Click += (object sender, EventArgs e) =>
+                    {
+                        if (SwitchPressed == false)
+                        {
+                            for (int j = 10; j < 36; j++)
+                            {
+                                buttons[j].Text = buttons[j].Text.ToLower();
+                            }
+                            SwitchPressed = true;
+                        }
+                        else
+                        {
+                            for (int j = 10; j < 36; j++)
+                            {
+                                buttons[j].Text = buttons[j].Text.ToUpper();
+                            }
+                            SwitchPressed = false;
+                        }
                     };
                 }
             }
