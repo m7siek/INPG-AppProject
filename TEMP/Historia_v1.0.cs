@@ -1,8 +1,7 @@
-﻿//Podstawowy składnik do funkcji obsługi historii
-//Odczyt z pliku
+﻿//Druga wersja funkcji
+//Odczyt z jednego pliku i zapis do drugiego po jednej linii
 
-//Na tym etapie funkcja odczytuje tekst po jedej linijce i każdą linię przepisuje do osobnej zmiennej
-
+//Funkcja odczytuje wszytkie linie z jednego pliku i przepisuje je do  drugiego pliku
 
 
 using System;
@@ -19,21 +18,23 @@ namespace Historia_Konsolowo
         static void Main()
         {
             String[] lines;
-            lines = new String[10];
-           
-                // Otwarcie pliku
-                StreamReader sr = new StreamReader("s1.txt");
+            lines = new String[11];
+
+            // Otwarcie pliku
+            StreamReader sr1 = new StreamReader("s1.txt");
 
             //Odczyt po jednej linijce
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 11; i++)
             {
-                lines[i] = sr.ReadLine();
+                lines[i] = sr1.ReadLine();
                 Console.WriteLine(lines[i]);
+                File.WriteAllLines("s2.txt", lines);
             }
-             
-                sr.Close();
-                Console.ReadLine();
+
+            sr1.Close();
             
+            Console.ReadLine();
+
         }
     }
 }
