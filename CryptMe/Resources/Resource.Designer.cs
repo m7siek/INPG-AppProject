@@ -78,8 +78,8 @@ namespace CryptMe
 			// aapt resource value: 0x7f050003
 			public const int KeyboardNumbersLineLayout = 2131034115;
 			
-			// aapt resource value: 0x7f05002b
-			public const int KeyboardUtilLineLayout = 2131034155;
+			// aapt resource value: 0x7f05002d
+			public const int KeyboardUtilLineLayout = 2131034157;
 			
 			// aapt resource value: 0x7f050000
 			public const int MainViewLayout = 2131034112;
@@ -117,11 +117,14 @@ namespace CryptMe
 			// aapt resource value: 0x7f05001a
 			public const int buttonA = 2131034138;
 			
-			// aapt resource value: 0x7f050028
-			public const int buttonB = 2131034152;
+			// aapt resource value: 0x7f050029
+			public const int buttonB = 2131034153;
 			
-			// aapt resource value: 0x7f050026
-			public const int buttonC = 2131034150;
+			// aapt resource value: 0x7f05002c
+			public const int buttonBSP = 2131034156;
+			
+			// aapt resource value: 0x7f050027
+			public const int buttonC = 2131034151;
 			
 			// aapt resource value: 0x7f05001c
 			public const int buttonD = 2131034140;
@@ -129,8 +132,8 @@ namespace CryptMe
 			// aapt resource value: 0x7f050011
 			public const int buttonE = 2131034129;
 			
-			// aapt resource value: 0x7f05002d
-			public const int buttonEnter = 2131034157;
+			// aapt resource value: 0x7f05002f
+			public const int buttonEnter = 2131034159;
 			
 			// aapt resource value: 0x7f05001d
 			public const int buttonF = 2131034141;
@@ -153,11 +156,11 @@ namespace CryptMe
 			// aapt resource value: 0x7f050022
 			public const int buttonL = 2131034146;
 			
-			// aapt resource value: 0x7f05002a
-			public const int buttonM = 2131034154;
+			// aapt resource value: 0x7f05002b
+			public const int buttonM = 2131034155;
 			
-			// aapt resource value: 0x7f050029
-			public const int buttonN = 2131034153;
+			// aapt resource value: 0x7f05002a
+			public const int buttonN = 2131034154;
 			
 			// aapt resource value: 0x7f050017
 			public const int buttonO = 2131034135;
@@ -174,8 +177,11 @@ namespace CryptMe
 			// aapt resource value: 0x7f05001b
 			public const int buttonS = 2131034139;
 			
-			// aapt resource value: 0x7f05002c
-			public const int buttonSpace = 2131034156;
+			// aapt resource value: 0x7f05002e
+			public const int buttonSpace = 2131034158;
+			
+			// aapt resource value: 0x7f050024
+			public const int buttonSwitch = 2131034148;
 			
 			// aapt resource value: 0x7f050013
 			public const int buttonT = 2131034131;
@@ -183,20 +189,20 @@ namespace CryptMe
 			// aapt resource value: 0x7f050015
 			public const int buttonU = 2131034133;
 			
-			// aapt resource value: 0x7f050027
-			public const int buttonV = 2131034151;
+			// aapt resource value: 0x7f050028
+			public const int buttonV = 2131034152;
 			
 			// aapt resource value: 0x7f050010
 			public const int buttonW = 2131034128;
 			
-			// aapt resource value: 0x7f050025
-			public const int buttonX = 2131034149;
+			// aapt resource value: 0x7f050026
+			public const int buttonX = 2131034150;
 			
 			// aapt resource value: 0x7f050014
 			public const int buttonY = 2131034132;
 			
-			// aapt resource value: 0x7f050024
-			public const int buttonZ = 2131034148;
+			// aapt resource value: 0x7f050025
+			public const int buttonZ = 2131034149;
 			
 			static Id()
 			{
