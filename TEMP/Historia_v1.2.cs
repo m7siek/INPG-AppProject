@@ -7,10 +7,12 @@
 //Do ewentuanej zmiany: 
 //                      -nazwa pliku wyjsciowego dodana jako arument wywolania
 //                      -zmiana pojemnosci historii na nielimitowana
+//                      -utworzenie w funkcji opcji wczytania pozycji z historii do aplikacji
 
 using System;
 using System.IO;
-
+// Funkcja nie otrzymuje nic na wejsciu, do poprawy w momencie gdy gotowa będzie obsługa pliku wyjsciowego
+// Wtedy struktura funkji bedzie przebudowana 
 static void archive()
 {
     String[] tmp_string = new String[100];
