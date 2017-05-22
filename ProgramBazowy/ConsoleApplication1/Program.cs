@@ -4,25 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/* Program generujący parę kluczy publicznych  (n,e) oraz prywatnych (n,d) metodą RSA na podstawie załączonej biblioteki liczb pierwszych 
+ 
+     ~Milva
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++       
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
 namespace ConsoleApplication1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int k;
-            long p, q, n, d, e;
+            int k;                    // zmienna pomocnicza potrzebna do uzyskania klucza prywatnego
+            long p=0, q=0, n, d, e;
 
+            while (p == q)
+            {
+                p = Big();           //  p, q - dwie duże liczby pierwsze o podobnym rozmiarze w bitach losowane metodą "Random"
+                q = Big();
+            }
 
-            e = Small();
+            n = p * q;               // pierwsza z pary liczb klucza prywatnego / publicznego
 
-            p = Big();
-            q = Big();
+            e = Small();             // druga z pary liczb klucza publicznego
 
-            k = getIndex();
+            k = getIndex();      
 
-            n = p * q;
-            d = (1 + k * (p - 1) * (q - 1)) / e;
+          
+            d = (1 + k * (p - 1) * (q - 1)) / e;  // druga z pary liczb klucza prywantego 
 
 
             Console.BackgroundColor = ConsoleColor.DarkGray;
@@ -33,19 +46,24 @@ namespace ConsoleApplication1
             Console.WriteLine("\n\nKulcz prywatny:\t\t("+n+" , "+e+" )\nKlucz publiczny:\t("+n+" , "+d+" )\n\n");
 
             Console.ReadKey();
+            
 
 
         }
 
 
-        static int getIndex()
-        {
+        static int getIndex()                           // funkcja losująca liczbę z zakresu 0,50
+        {                                               // funkcja losuje indeksy użytych liczb pierwszych
             Random randomIndex = new Random();
             int i;
-            i = randomIndex.Next(0, 20);
+            i = randomIndex.Next(0, 50);
 
             return i;
         }
+
+
+        
+
 
 
         static int Small()
