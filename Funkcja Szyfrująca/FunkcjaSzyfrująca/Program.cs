@@ -37,8 +37,8 @@ namespace FunkcjaSzyfrująca
         static void Main(string[] args)
         {
             Program n = new Program();
-            int kod = n.zmien_na_ascii('m');
-            n.kodowanie_RSA(20, 40, kod);
+            int kod = n.zmien_na_ascii('n');
+            n.kodowanie_RSA(x, y, kod); 
 
         }
     }
