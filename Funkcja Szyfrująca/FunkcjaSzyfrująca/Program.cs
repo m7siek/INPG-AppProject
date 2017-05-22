@@ -26,7 +26,7 @@ namespace FunkcjaSzyfrująca
         public void kodowanie_RSA(int e, int n, int kod) //funckja otrzymuje jako parametry klucz w postaci dwóch liczb oraz literę zamienioną na kod ASCII
         {
             int wynik = dzialanie(e, n, kod);
-            Console.WriteLine("\nWynik kodowania = {1}", wynik);
+            Console.WriteLine("\nWynik kodowania = {0}", wynik);
 
         }
         public int zmien_na_ascii(char a) //funkcja zamienia otrzymaną literę na odpowiadający jej kod ASCII
@@ -38,8 +38,9 @@ namespace FunkcjaSzyfrująca
         static void Main(string[] args)
         {
             Program n = new Program();
-            int kod = n.zmien_na_ascii('n');
-            n.kodowanie_RSA(x, y, kod); //x i y są przykładowymi liczbami klucza
+            int kod = n.zmien_na_ascii('h');
+            n.kodowanie_RSA(147, 324, kod); //x i y są przykładowymi liczbami klucza
+            Console.Read();
 
         }
     }
