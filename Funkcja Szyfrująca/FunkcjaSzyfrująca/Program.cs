@@ -9,7 +9,7 @@ namespace FunkcjaSzyfrująca
 {
     class Program
     {
-        public int dzialanie(int a, int w, int n)
+        public int dzialanie(int a, int w, int n) //funkcja wykonuje działanie szyfrujące otrzymując klucz i znak w postaci kodu ASCII
         {
             int pot, wyn, q;
 
@@ -22,13 +22,13 @@ namespace FunkcjaSzyfrująca
             return wyn;
         }
 
-        public void kodowanie_RSA(int e, int n, int kod)
+        public void kodowanie_RSA(int e, int n, int kod) //funckja otrzymuje jako parametry klucz w postaci dwóch liczb oraz literę zamienioną na kod ASCII
         {
             int wynik = dzialanie(e, n, kod);
             Console.WriteLine("\nWynik kodowania = {1}", wynik);
 
         }
-        public int zmien_na_ascii(char a)
+        public int zmien_na_ascii(char a) //funkcja zamienia otrzymaną literę na odpowiadający jej kod ASCII
         {
             int kod = (int)a;
             return kod;
@@ -38,7 +38,7 @@ namespace FunkcjaSzyfrująca
         {
             Program n = new Program();
             int kod = n.zmien_na_ascii('n');
-            n.kodowanie_RSA(x, y, kod); 
+            n.kodowanie_RSA(x, y, kod); //x i y są przykładowymi liczbami klucza
 
         }
     }
