@@ -9,14 +9,15 @@ namespace FunkcjaSzyfrująca
 {
     class Program
     {
-        public int dzialanie(int a, int w, int n) //funkcja wykonuje działanie szyfrujące otrzymując klucz i znak w postaci kodu ASCII
+        public int dzialanie(int e, int n, int kod) //funkcja wykonuje działanie szyfrujące otrzymując klucz i znak w postaci kodu ASCII
         {
             int pot, wyn, q;
 
-            pot = a; wyn = 1;
-            for (q = w; q > 0; q /= 2)
+            pot = e; wyn = 1;
+            for (q = kod; q > 0; q /= 2)
             {
-                if (q % 2) wyn = (wyn * pot) % n;
+                if (q % 2 == 0)
+                    wyn = (wyn * pot) % n;
                 pot = (pot * pot) % n;
             }
             return wyn;
