@@ -4,44 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
-
+ 
 namespace FunkcjaSzyfrująca
 {
-    class Program
+    public class Program
     {
-        public int dzialanie(int e, int n, int kod) //funkcja wykonuje działanie szyfrujące otrzymując klucz i znak w postaci kodu ASCII
+        public static long[] kodowanie_RSA(int[] kod, long e, long mod, int dlugosc) //funkcja otrzymuje tablicę znaków zamienionych na odpowiadające im kody ASCII i długość tablicy je przechowującej oraz kluch w postaci dwóch liczb
         {
-            int pot, wyn, q;
-
-            pot = e; wyn = 1;
-            for (q = kod; q > 0; q /= 2)
+            long pot;
+            var wyn = new long[dlugosc];
+            for (int j = 0; j < dlugosc; j++)
             {
-                if (q % 2 == 0)
-                    wyn = (wyn * pot) % n;
-                pot = (pot * pot) % n;
+                pot = kod[j]; wyn[j] = 1;
+                for (long i = e; i > 0; i /= 2)
+                {
+                    if ((i % 2) == 1)
+                        wyn[j] = (wyn[j] * pot) % mod;
+                    pot = (pot * pot) % mod;
+                }
             }
-            return wyn;
+            return wyn; //jak wynik funkcja zwraca tablicę zakodowanych liter 
         }
-
-        public void kodowanie_RSA(int e, int n, int kod) //funckja otrzymuje jako parametry klucz w postaci dwóch liczb oraz literę zamienioną na kod ASCII
+        public static int[] zmien_na_ascii(char[] a, int dlugosc) //funkcja zamienia otrzymaną tablicę liter na odpowiadające im kody ASCII
         {
-            int wynik = dzialanie(e, n, kod);
-            Console.WriteLine("\nWynik kodowania = {0}", wynik);
+            var kod = new int[dlugosc];
 
-        }
-        public int zmien_na_ascii(char a) //funkcja zamienia otrzymaną literę na odpowiadający jej kod ASCII
-        {
-            int kod = (int)a;
+            for (int i = 0; i < dlugosc; i++)
+            {
+                kod[i] = (int)a[i];
+            }
+
             return kod;
-        }
-
-        static void Main(string[] args)
-        {
-            Program n = new Program();
-            int kod = n.zmien_na_ascii('h');
-            n.kodowanie_RSA(147, 324, kod); //x i y są przykładowymi liczbami klucza
-            Console.Read();
-
         }
     }
 }
