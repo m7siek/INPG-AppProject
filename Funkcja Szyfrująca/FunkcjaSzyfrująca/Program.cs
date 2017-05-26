@@ -9,9 +9,9 @@ namespace FunkcjaSzyfrująca
 {
     public class Program
     {
-        public static long[] kodowanie_RSA(int[] kod, long e, long mod, int dlugosc) //funkcja otrzymuje tablicę znaków zamienionych na odpowiadające im kody ASCII i długość tablicy je przechowującej oraz kluch w postaci dwóch liczb
-        {
-            long pot;
+        public static long[] kodowanie_RSA(int[] kod, long e, long mod, int dlugosc) //funkcja otrzymuje tablicę znaków zamienionych 
+        {                                                                            // na odpowiadające im kody ASCII i długość tablicy 
+            long pot;                                                                //je przechowującej oraz klucz w postaci dwóch liczb
             var wyn = new long[dlugosc];
             for (int j = 0; j < dlugosc; j++)
             {
