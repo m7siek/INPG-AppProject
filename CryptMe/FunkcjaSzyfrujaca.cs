@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace FunkcjaSzyfrująca
+namespace CryptMe
 {
-    public class Program
+    public class Encrypt
     {
-        public static long[] kodowanie_RSA(int[] kod, long e, long mod, int dlugosc) //funkcja otrzymuje tablicę znaków zamienionych 
+        public static long[] Kodowanie_RSA(int[] kod, long e, long mod, int dlugosc) //funkcja otrzymuje tablicę znaków zamienionych 
         {                                                                            // na odpowiadające im kody ASCII i długość tablicy 
             long pot;                                                                //je przechowującej oraz klucz w postaci dwóch liczb
             var wyn = new long[dlugosc];
@@ -25,7 +25,7 @@ namespace FunkcjaSzyfrująca
             }
             return wyn; //jak wynik funkcja zwraca tablicę zakodowanych liter 
         }
-        public static int[] zmien_na_ascii(char[] a, int dlugosc) //funkcja zamienia otrzymaną tablicę liter na odpowiadające im kody ASCII
+        public static int[] ZmienNaASCII(char[] a, int dlugosc) //funkcja zamienia otrzymaną tablicę liter na odpowiadające im kody ASCII
         {
             var kod = new int[dlugosc];
 

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace CryptMe
 {
-    class Program
+    class KeyGen
     {
         public static long Q()
         {
@@ -60,7 +60,7 @@ namespace CryptMe
             //if (p==0||q==0) do dopisania kom. błędu
 
 
-            k = getIndex();
+            k = GetIndex();
 
             e = E();
 
@@ -69,7 +69,7 @@ namespace CryptMe
         }
 
 
-        static int getIndex()                           // funkcja losująca liczbę z zakresu 0,50
+        static int GetIndex()                           // funkcja losująca liczbę z zakresu 0,50
         {                                               // funkcja losuje indeksy użytych liczb pierwszych
             Random randomIndex = new Random();
             int i;
@@ -89,7 +89,7 @@ namespace CryptMe
             small = new int[50];
 
             int i;
-            i = getIndex();
+            i = GetIndex();
 
             small[0] = 15485863;
             small[1] = 15485867;
@@ -153,7 +153,7 @@ namespace CryptMe
             big = new int[50];
 
             int i;
-            i = getIndex();
+            i = GetIndex();
 
             big[0] = 179424673;
             big[1] = 179424691;

@@ -16,17 +16,31 @@ namespace CryptMe
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
+
             SetContentView(Resource.Layout.Main);
 
+            
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            // Create Layouts and their elements handlers
             TextView inputTextView = FindViewById<TextView>(Resource.Id.InputTextView);
+            TextView outputTextView = FindViewById<TextView>(Resource.Id.OutTextView);
+            LinearLayout MainView = FindViewById<LinearLayout>(Resource.Id.MainViewLayout);
+            LinearLayout TranslatedView = FindViewById<LinearLayout>(Resource.Id.TranslatedLayout);
 
-            //string inputtext = inputTextView.Text;
+            var buttons = new Button[40];       // MainView buttons
+            bool SwitchPressed = false;         // (Lower/Upper)case control
 
-            var buttons = new Button[40];
-            bool SwitchPressed = false;
+            long[] textOUT;
 
-            // Declare handle and behaviour for axml buttons
-            for (int i = 0; i < 40; i++)
+            long RSA_n = KeyGen.N();
+            long RSA_e = KeyGen.E();
+            long RSA_d = KeyGen.D();
+
+
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            for (int i = 0; i < 40; i++)                    // Declare handle and behaviour for axml buttons
             {
                 string buttonID = "button";
                 if (i >= 10 && i < 36)
@@ -39,6 +53,8 @@ namespace CryptMe
                 else if (i == 38) buttonID += "Switch";
                 else if (i == 39) buttonID += "Enter";
                 else buttonID += i;
+
+                long temp = KeyGen.N();
 
                 int resID = Resources.GetIdentifier(buttonID, "id", "CryptMe.CryptMe");
                 buttons[i] = (Button)FindViewById<Button>(resID);
@@ -74,6 +90,21 @@ namespace CryptMe
                             }
                             SwitchPressed = false;
                         }
+                    };
+                }
+                else if (i == 39)
+                {
+                    buttons[i].Click += (object sender, EventArgs e) =>
+                    {
+                        // POCZĄTEK BLOKU
+                        // Kod poniżej jest jedynie wersją testową
+
+                        textOUT = Encrypt.Kodowanie_RSA(Encrypt.ZmienNaASCII(inputTextView.Text.ToCharArray(), inputTextView.Text.Length), RSA_e, RSA_n, inputTextView.Text.Length);
+                        MainView.Visibility = Android.Views.ViewStates.Invisible;
+                        TranslatedView.Visibility = Android.Views.ViewStates.Visible;
+                        outputTextView.Text = textOUT.ToString();
+
+                        // KONIEC BLOKU
                     };
                 }
             }
