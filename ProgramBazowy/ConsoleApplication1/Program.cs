@@ -29,8 +29,10 @@ namespace ConsoleApplication1
         {
             long p = 0, q = Q();
 
-            while (p == q)
+            do
+            {
                 p = Big();           //  p, q - dwie duże liczby pierwsze o podobnym rozmiarze w bitach losowane metodą "Random"
+            } while (p == q);
 
             return p;
         }
