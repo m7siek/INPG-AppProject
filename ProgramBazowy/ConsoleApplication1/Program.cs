@@ -17,38 +17,53 @@ namespace ConsoleApplication1
 {
     class Program
     {
-        static void Main(string[] args)
+        public static long Q()
         {
-            int k;                    // zmienna pomocnicza potrzebna do uzyskania klucza prywatnego
-            long p=0, q=0, n, d, e;
+            long q = 0;
+            q = Big();
+
+            return q;
+        }
+
+        public static long P()
+        {
+            long p = 0, q = Q();
 
             while (p == q)
-            {
                 p = Big();           //  p, q - dwie duże liczby pierwsze o podobnym rozmiarze w bitach losowane metodą "Random"
-                q = Big();
-            }
+
+            return p;
+        }
+
+        public static long N()
+        {
+            long p = P(), q = Q(), n;
 
             n = p * q;               // pierwsza z pary liczb klucza prywatnego / publicznego
 
-            e = Small();             // druga z pary liczb klucza publicznego
+            return n;
+        }
 
-            k = getIndex();      
+        public static long E()
+        {
+            long e;
+            e = Small();
+            return e;
+        }
 
-          
-            d = (1 + k * (p - 1) * (q - 1)) / e;  // druga z pary liczb klucza prywantego 
+        public static long D()
+        {
+            long k, d, e, p = P(), q = Q();
 
-
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-
-
-            Console.WriteLine("RSA: Key generator\n\np:" + p + "\nq:" + q + "\nn:" + n + "\ne:" + e + "\nd:" + d);
-
-            Console.WriteLine("\n\nKulcz prywatny:\t\t("+n+" , "+e+" )\nKlucz publiczny:\t("+n+" , "+d+" )\n\n");
-
-            Console.ReadKey();
-            
+            //if (p==0||q==0) do dopisania kom. błędu
 
 
+            k = getIndex();
+
+            e = E();
+
+            d = (1 + k * (p - 1) * (q - 1)) / e;  // druga z pary liczb klucza prywantego
+            return d;
         }
 
 
