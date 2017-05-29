@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 /* Program generujący parę kluczy publicznych  (n,e) oraz prywatnych (n,d) metodą RSA na podstawie załączonej biblioteki liczb pierwszych 
  
      ~Milva
@@ -57,7 +56,7 @@ namespace CryptMe
         {
             long k, d, e, p = P(), q = Q();
 
-            //if (p==0||q==0) do dopisania kom. błędu
+            if (p == 0 || q == 0) return -1;
 
 
             k = GetIndex();

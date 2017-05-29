@@ -99,7 +99,15 @@ namespace CryptMe
                         // POCZĄTEK BLOKU
                         // Kod poniżej jest jedynie wersją testową
 
-                        textOUT = Encrypt.Kodowanie_RSA(Encrypt.ZmienNaASCII(inputTextView.Text.ToCharArray(), inputTextView.Text.Length), RSA_e, RSA_n, inputTextView.Text.Length);
+                        if(RSA_d==-1)
+                        {
+                            Toast.MakeText(this, "Wystąpił problem przy generacji kluczy. Zamykanie aplikacji", ToastLength.Long).Show();
+                            this.FinishAffinity();
+                        }
+
+                        var numbersIN = Encrypt.ZmienNaASCII(inputTextView.Text.ToCharArray(), inputTextView.Text.Length);
+
+                        textOUT = Encrypt.Kodowanie_RSA(numbersIN, RSA_e, RSA_n, inputTextView.Text.Length);
                         MainView.Visibility = Android.Views.ViewStates.Invisible;
                         TranslatedView.Visibility = Android.Views.ViewStates.Visible;
                         outputTextView.Text = textOUT.ToString();
