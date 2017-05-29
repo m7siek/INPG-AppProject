@@ -28,7 +28,6 @@ namespace CryptMe
 
             // Create Layouts and their elements handlers
             TextView inputTextView = FindViewById<TextView>(Resource.Id.InputTextView);
-            TextView outputTextView = FindViewById<TextView>(Resource.Id.textOutView);
             LinearLayout MainView = FindViewById<LinearLayout>(Resource.Id.MainViewLayout);
             //LinearLayout TranslatedView = FindViewById<LinearLayout>(Resource.Id.TranslatedLayout);
 
@@ -111,9 +110,13 @@ namespace CryptMe
                         var numbersIN = Encrypt.ZmienNaASCII(inputTextView.Text.ToCharArray(), inputTextView.Text.Length);
 
                         textOUT = Encrypt.Kodowanie_RSA(numbersIN, RSA_e, RSA_n, inputTextView.Text.Length);
-                        outputTextView.Text = textOUT.ToString();
+                        
                         //MainView.Visibility = Android.Views.ViewStates.Invisible;
                         SetContentView(Resource.Layout.Output);
+
+                        TextView outputTextView = FindViewById<TextView>(Resource.Id.textOutView);
+
+                        outputTextView.Text = textOUT.ToString();
                         //TranslatedView.Visibility = Android.Views.ViewStates.Visible;
 
 
