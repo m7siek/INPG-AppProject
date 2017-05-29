@@ -4,13 +4,17 @@ using Android.Content;
 using Android.Widget;
 using Android.OS;
 using Android.Content.Res;
-
+using Android.Views;
 
 namespace CryptMe
 {
     [Activity(Label = "CryptMe", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+        long RSA_n = KeyGen.N();
+        long RSA_e = KeyGen.E();
+        long RSA_d = KeyGen.D();
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -33,9 +37,7 @@ namespace CryptMe
 
             long[] textOUT;
 
-            long RSA_n = KeyGen.N();
-            long RSA_e = KeyGen.E();
-            long RSA_d = KeyGen.D();
+            
 
 
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -108,14 +110,38 @@ namespace CryptMe
                         var numbersIN = Encrypt.ZmienNaASCII(inputTextView.Text.ToCharArray(), inputTextView.Text.Length);
 
                         textOUT = Encrypt.Kodowanie_RSA(numbersIN, RSA_e, RSA_n, inputTextView.Text.Length);
+                        outputTextView.Text = "TEST";
                         MainView.Visibility = Android.Views.ViewStates.Invisible;
                         TranslatedView.Visibility = Android.Views.ViewStates.Visible;
-                        outputTextView.Text = textOUT.ToString();
+                        
 
                         // KONIEC BLOKU
                     };
                 }
             }
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.AppMenu, menu);
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.NewKeys:
+                    RSA_n = KeyGen.N();
+                    RSA_e = KeyGen.E();
+                    RSA_d = KeyGen.D();
+                    return true;
+
+                case Resource.Id.ShowKeys:
+                    Toast.MakeText(this, "Klucz publiczny: ("+RSA_n.ToString()+", "+RSA_e.ToString()+ ")\nKlucz prywatny: (" + RSA_n.ToString() + ", " + RSA_d.ToString() + ")", ToastLength.Long).Show();
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

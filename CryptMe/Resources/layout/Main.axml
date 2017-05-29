@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/background_light"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    tools:gridSpec="1|8|#0093eeff|K:#ee8700ff:16,l:72,l:16,r|S:#83ee00ff:16,0,l:16,56,l:16,0,r">
     <LinearLayout
         android:orientation="vertical"
         android:minWidth="25px"
