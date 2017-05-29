@@ -40,6 +40,8 @@ namespace CryptMe
         {
             long p = P(), q = Q(), n;
 
+            if (p == 0 || q == 0) return -1;
+
             n = p * q;               // pierwsza z pary liczb klucza prywatnego / publicznego
 
             return n;

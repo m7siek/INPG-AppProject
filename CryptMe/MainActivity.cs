@@ -80,7 +80,8 @@ namespace CryptMe
                         {
                             for (int j = 10; j < 36; j++)
                             {
-                                buttons[j].Text = buttons[j].Text.ToLower();
+                                RunOnUiThread(() => buttons[j].Text = buttons[j].Text.ToLower());
+                                
                             }
                             SwitchPressed = true;
                         }
@@ -101,9 +102,9 @@ namespace CryptMe
                         // POCZĄTEK BLOKU
                         // Kod poniżej jest jedynie wersją testową
 
-                        if(RSA_d==-1)
+                        if(RSA_d == -1 || RSA_n == -1)
                         {
-                            Toast.MakeText(this, "Wystąpił problem przy generacji kluczy. Zamykanie aplikacji", ToastLength.Long).Show();
+                            Toast.MakeText(this, "Wystąpił problem przy generacji kluczy.\nZamykanie aplikacji", ToastLength.Long).Show();
                             this.FinishAffinity();
                         }
 
@@ -138,7 +139,8 @@ namespace CryptMe
                     return true;
 
                 case Resource.Id.ShowKeys:
-                    Toast.MakeText(this, "Klucz publiczny: ("+RSA_n.ToString()+", "+RSA_e.ToString()+ ")\nKlucz prywatny: (" + RSA_n.ToString() + ", " + RSA_d.ToString() + ")", ToastLength.Long).Show();
+                    Toast.MakeText(this, "Klucz publiczny: ("+RSA_n.ToString()+", "+RSA_e.ToString()+ ")\n" +
+                                         "Klucz prywatny: (" + RSA_n.ToString() + ", " + RSA_d.ToString() + ")", ToastLength.Long).Show();
                     return true;
             }
             return base.OnOptionsItemSelected(item);
