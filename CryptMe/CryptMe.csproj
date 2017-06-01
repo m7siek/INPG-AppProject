@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FunkcjaSzyfrujaca.cs" />
+    <Compile Include="Klucze.cs" />
     <Compile Include="KeyPress.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -61,6 +63,9 @@
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\layout\Output.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -79,9 +84,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\layout-large\" />
-    <Folder Include="Resources\layout-normal\" />
-    <Folder Include="Resources\layout-small\" />
+    <AndroidResource Include="Resources\Menu\AppMenu.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

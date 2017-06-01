@@ -2,4 +2,6 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">CryptMe</string>
+    <string name="NewKeys">Wygeneruj nowe klucze</string>
+    <string name="ShowKeys">Wyświetl klucze</string>
 </resources>
