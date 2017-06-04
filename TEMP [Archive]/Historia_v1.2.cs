@@ -13,16 +13,15 @@
 
 using System;
 using System.IO;
-// Funkcja nie otrzymuje nic na wejsciu, do poprawy w momencie gdy gotowa będzie obsługa pliku wyjsciowego
 // Wtedy struktura funkji bedzie przebudowana 
-static void archive()
+static void archive(string path_1, string path_2)//path_1 - archiwum, path_2 - wyjscie
 {
     String[] tmp_string = new String[100];
     int i;
 
         // Otwarcie strumieni
-        StreamReader sr1 = new StreamReader("sciezka do pliku archiwum");
-        StreamReader sr2 = new StreamReader("sciezka do pliku wyjscia");
+        StreamReader sr1 = new StreamReader(path_1);
+        StreamReader sr2 = new StreamReader(path_2);
 
         //Odczyt po jednej linijce
         for (i = 1; i < 100; i++)
@@ -38,14 +37,12 @@ static void archive()
         sr2.Close();
 
         //Zapis do pliku archiwalnego
-        File.WriteAllLines("sciezka do pliku archiwum", tmp_string);
-    File.Delete("sciezka do pliku wyjscia"); //Plik jest usuwany aby nie zasmiecac pamieci
+        File.WriteAllLines(path_1, tmp_string);
+    File.Delete(path_2); //Plik jest usuwany aby nie zasmiecac pamieci
 
 }
-static void save_to_file(string tekst)
+static void save_to_file(string path_2,string tekst)
 {
-    File.Create("scieżka do pliku wyjsca");
-    StreamReader sr1 = new StreamReader("sciezka do pliku wyjscia");
-    File.WriteAllLines("sciezka do pliku wyjscia", tekst);
-    sr1.Close();
+    File.Create(path_2);
+    File.WriteAllLines(path_2, tekst);
 }
