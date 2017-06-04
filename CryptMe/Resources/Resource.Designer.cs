@@ -45,7 +45,10 @@ namespace CryptMe
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int Background = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Icon = 2130837505;
 			
 			static Drawable()
 			{
@@ -59,6 +62,12 @@ namespace CryptMe
 		
 		public partial class Id
 		{
+			
+			// aapt resource value: 0x7f060034
+			public const int CopyKeys = 2131099700;
+			
+			// aapt resource value: 0x7f060031
+			public const int InfoText = 2131099697;
 			
 			// aapt resource value: 0x7f060002
 			public const int InputTextView = 2131099650;
@@ -84,11 +93,11 @@ namespace CryptMe
 			// aapt resource value: 0x7f060000
 			public const int MainViewLayout = 2131099648;
 			
-			// aapt resource value: 0x7f060031
-			public const int NewKeys = 2131099697;
-			
 			// aapt resource value: 0x7f060032
-			public const int ShowKeys = 2131099698;
+			public const int NewKeys = 2131099698;
+			
+			// aapt resource value: 0x7f060033
+			public const int ShowKeys = 2131099699;
 			
 			// aapt resource value: 0x7f06000d
 			public const int button0 = 2131099661;
@@ -263,6 +272,9 @@ namespace CryptMe
 			
 			// aapt resource value: 0x7f040001
 			public const int ApplicationName = 2130968577;
+			
+			// aapt resource value: 0x7f040004
+			public const int CopyKeys = 2130968580;
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;

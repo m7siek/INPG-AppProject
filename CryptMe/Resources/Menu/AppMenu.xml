@@ -3,5 +3,7 @@
     <item android:id="@+id/NewKeys"
           android:title="@string/NewKeys" />
     <item android:id="@+id/ShowKeys"
-           android:title="@string/ShowKeys" />
+          android:title="@string/ShowKeys" />
+    <item android:id="@+id/CopyKeys"
+          android:title="@string/CopyKeys" />
 </menu>

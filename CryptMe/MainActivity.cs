@@ -146,6 +146,17 @@ namespace CryptMe
                     Toast.MakeText(this, "Klucz publiczny: ("+RSA_n.ToString()+", "+RSA_e.ToString()+ ")\n" +
                                          "Klucz prywatny: (" + RSA_n.ToString() + ", " + RSA_d.ToString() + ")", ToastLength.Long).Show();
                     return true;
+
+                case Resource.Id.CopyKeys:
+                    ClipboardManager clipboard = (ClipboardManager)GetSystemService(Context.ClipboardService);
+                    ClipData clip = ClipData.NewPlainText("Klucze", "Klucz publiczny: (" + RSA_n.ToString() + ", " + RSA_e.ToString() + ")\n" +
+                                                                    "Klucz prywatny: (" + RSA_n.ToString() + ", " + RSA_d.ToString() + ")");
+
+                    clipboard.PrimaryClip = clip;
+
+                    Toast.MakeText(this, "Skopiowano do schowka", ToastLength.Long).Show();
+
+                    return true;
             }
             return base.OnOptionsItemSelected(item);
         }

@@ -4,4 +4,5 @@
     <string name="ApplicationName">CryptMe</string>
     <string name="NewKeys">Wygeneruj nowe klucze</string>
     <string name="ShowKeys">Wyświetl klucze</string>
+    <string name="CopyKeys">Skopiuj klucze do schowka</string>
 </resources>
