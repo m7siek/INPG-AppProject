@@ -29,7 +29,7 @@ namespace CryptMe
             // Create Layouts and their elements handlers
             TextView inputTextView = FindViewById<TextView>(Resource.Id.InputTextView);
             LinearLayout MainView = FindViewById<LinearLayout>(Resource.Id.MainViewLayout);
-            //LinearLayout TranslatedView = FindViewById<LinearLayout>(Resource.Id.TranslatedLayout);
+            
 
             var buttons = new Button[40];       // MainView buttons
             bool SwitchPressed = false;         // (Lower/Upper)case control
@@ -111,14 +111,14 @@ namespace CryptMe
 
                         textOUT = Encrypt.Kodowanie_RSA(numbersIN, RSA_e, RSA_n, inputTextView.Text.Length);
                         
-                        //MainView.Visibility = Android.Views.ViewStates.Invisible;
                         SetContentView(Resource.Layout.Output);
 
                         TextView outputTextView = FindViewById<TextView>(Resource.Id.textOutView);
 
-                        outputTextView.Text = textOUT.ToString();
-                        //TranslatedView.Visibility = Android.Views.ViewStates.Visible;
-
+                        foreach (long element in textOUT)
+                        {
+                            outputTextView.Text += element.ToString();
+                        }
 
                         // KONIEC BLOKU
                     };
