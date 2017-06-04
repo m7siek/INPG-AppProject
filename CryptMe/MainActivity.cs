@@ -11,119 +11,40 @@ namespace CryptMe
     [Activity(Label = "CryptMe", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        long RSA_n = KeyGen.N();
-        long RSA_e = KeyGen.E();
-        long RSA_d = KeyGen.D();
+
+        public long RSA_n = KeyGen.N();
+        public long RSA_e = KeyGen.E();
+        public long RSA_d = KeyGen.D();
+
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
+            ISharedPreferences pref = Application.Context.GetSharedPreferences("Keys", FileCreationMode.Private);
+            ISharedPreferencesEditor edit = pref.Edit();
+
+            edit.PutLong("RSA_n", RSA_n);
+            edit.PutLong("RSA_e", RSA_e);
+            edit.PutLong("RSA_d", RSA_d);
+            edit.Apply();
+
             // Set our view from the "main" layout resource
 
             SetContentView(Resource.Layout.Main);
 
+            var trans = FragmentManager.BeginTransaction();
+
+            trans.Add(Resource.Id.FragmentContainer, new Fragments.Input(), "InputView");
+            trans.Commit();
+
+
+
+            
+
             
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-            // Create Layouts and their elements handlers
-            TextView inputTextView = FindViewById<TextView>(Resource.Id.InputTextView);
-            LinearLayout MainView = FindViewById<LinearLayout>(Resource.Id.MainViewLayout);
-            
-
-            var buttons = new Button[40];       // MainView buttons
-            bool SwitchPressed = false;         // (Lower/Upper)case control
-
-            long[] textOUT;
-
-            
-
-
-            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-            for (int i = 0; i < 40; i++)                    // Declare handle and behaviour for axml buttons
-            {
-                string buttonID = "button";
-                if (i >= 10 && i < 36)
-                {
-                    char ID = (char)(65 + i - 10);
-                    buttonID += ID;
-                }
-                else if (i == 36) buttonID += "Space";
-                else if (i == 37) buttonID += "BSP";
-                else if (i == 38) buttonID += "Switch";
-                else if (i == 39) buttonID += "Enter";
-                else buttonID += i;
-
-                long temp = KeyGen.N();
-
-                int resID = Resources.GetIdentifier(buttonID, "id", "CryptMe.CryptMe");
-                buttons[i] = (Button)FindViewById<Button>(resID);
-
-                Button activebutton = buttons[i];
-
-
-                if (i >= 0 && i <= 37)
-                {
-
-                    buttons[i].Click += (object sender, EventArgs e) =>
-                    {
-                        inputTextView.Text = KeyPress.ModifyString(activebutton, inputTextView.Text);
-                    };
-                }
-                else if (i == 38)
-                {
-                    buttons[i].Click += (object sender, EventArgs e) =>
-                    {
-                        if (SwitchPressed == false)
-                        {
-                            for (int j = 10; j < 36; j++)
-                            {
-                                RunOnUiThread(() => buttons[j].Text = buttons[j].Text.ToLower());
-                                
-                            }
-                            SwitchPressed = true;
-                        }
-                        else
-                        {
-                            for (int j = 10; j < 36; j++)
-                            {
-                                buttons[j].Text = buttons[j].Text.ToUpper();
-                            }
-                            SwitchPressed = false;
-                        }
-                    };
-                }
-                else if (i == 39)
-                {
-                    buttons[i].Click += (object sender, EventArgs e) =>
-                    {
-                        // POCZĄTEK BLOKU
-                        // Kod poniżej jest jedynie wersją testową
-
-                        if(RSA_d == -1 || RSA_n == -1)
-                        {
-                            Toast.MakeText(this, "Wystąpił problem przy generacji kluczy.\nZamykanie aplikacji", ToastLength.Long).Show();
-                            this.FinishAffinity();
-                        }
-
-                        var numbersIN = Encrypt.ZmienNaASCII(inputTextView.Text.ToCharArray(), inputTextView.Text.Length);
-
-                        textOUT = Encrypt.Kodowanie_RSA(numbersIN, RSA_e, RSA_n, inputTextView.Text.Length);
-                        
-                        SetContentView(Resource.Layout.Output);
-
-                        TextView outputTextView = FindViewById<TextView>(Resource.Id.textOutView);
-
-                        foreach (long element in textOUT)
-                        {
-                            outputTextView.Text += element.ToString();
-                        }
-
-                        // KONIEC BLOKU
-                    };
-                }
-            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -140,6 +61,15 @@ namespace CryptMe
                     RSA_n = KeyGen.N();
                     RSA_e = KeyGen.E();
                     RSA_d = KeyGen.D();
+
+                    ISharedPreferences pref = Application.Context.GetSharedPreferences("Keys", FileCreationMode.Private);
+                    ISharedPreferencesEditor edit = pref.Edit();
+
+                    edit.PutLong("RSA_n", RSA_n);
+                    edit.PutLong("RSA_e", RSA_e);
+                    edit.PutLong("RSA_d", RSA_d);
+                    edit.Apply();
+
                     return true;
 
                 case Resource.Id.ShowKeys:

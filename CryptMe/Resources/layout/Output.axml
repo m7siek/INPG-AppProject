@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textOutView"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="30dp"
-        android:layout_alignEnd="@+id/InfoText"
-        android:layout_below="@+id/InfoText" />
+        android:layout_below="@+id/InfoText"
+        android:layout_width="match_parent"
+        android:paddingLeft="3dp"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="vertical" />
     <TextView
-        android:text="Zaszyfrowany test:"
+        android:text="Zaszyfrowany tekst:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/InfoText"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:layout_alignParentTop="false"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

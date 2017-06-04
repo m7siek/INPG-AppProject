@@ -63,11 +63,14 @@ namespace CryptMe
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060034
-			public const int CopyKeys = 2131099700;
+			// aapt resource value: 0x7f060035
+			public const int CopyKeys = 2131099701;
 			
-			// aapt resource value: 0x7f060031
-			public const int InfoText = 2131099697;
+			// aapt resource value: 0x7f060030
+			public const int FragmentContainer = 2131099696;
+			
+			// aapt resource value: 0x7f060032
+			public const int InfoText = 2131099698;
 			
 			// aapt resource value: 0x7f060002
 			public const int InputTextView = 2131099650;
@@ -93,11 +96,11 @@ namespace CryptMe
 			// aapt resource value: 0x7f060000
 			public const int MainViewLayout = 2131099648;
 			
-			// aapt resource value: 0x7f060032
-			public const int NewKeys = 2131099698;
-			
 			// aapt resource value: 0x7f060033
-			public const int ShowKeys = 2131099699;
+			public const int NewKeys = 2131099699;
+			
+			// aapt resource value: 0x7f060034
+			public const int ShowKeys = 2131099700;
 			
 			// aapt resource value: 0x7f06000d
 			public const int button0 = 2131099661;
@@ -219,8 +222,8 @@ namespace CryptMe
 			// aapt resource value: 0x7f060025
 			public const int buttonZ = 2131099685;
 			
-			// aapt resource value: 0x7f060030
-			public const int textOutView = 2131099696;
+			// aapt resource value: 0x7f060031
+			public const int textOutView = 2131099697;
 			
 			static Id()
 			{
@@ -236,10 +239,13 @@ namespace CryptMe
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int Input = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Output = 2130903041;
+			public const int Main = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int Output = 2130903042;
 			
 			static Layout()
 			{
