@@ -30,7 +30,7 @@ static void archive()
 
         tmp_string[0] = sr2.ReadLine();
 
-        //Zapis do pliku
+        //Element testowy - do usuniecia
         for (i = 0; i < 100; i++) Console.WriteLine(tmp_string[i]);
 
         //Zamknięcie obu plików
@@ -42,8 +42,8 @@ static void archive()
 }
 static void save_to_file(string tekst)
 {
-    File.Create("scieżka do pliku archiwum");
-    StreamReader sr1 = new StreamReader("sciezka do pliku archiwum");
-    File.WriteAllLines("sciezka do pliku archiwum", tekst);
+    File.Create("scieżka do pliku wyjsca");
+    StreamReader sr1 = new StreamReader("sciezka do pliku wyjscia");
+    File.WriteAllLines("sciezka do pliku wyjscia", tekst);
     sr1.Close();
 }
