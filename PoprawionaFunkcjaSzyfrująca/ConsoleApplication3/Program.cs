@@ -10,23 +10,24 @@ namespace ConsoleApplication3
     {
         static void Main(string[] args)
         {
-            string Napis = "Hello Milva";                                                // Przykładowy tekst do zakodowania
+            string Napis = "Hello Milva, go on";                                                // Przykładowy tekst do zakodowania
             char[] napis = Napis.ToCharArray();
             int[] napisASCII;                                                      // robocza tablica przechiwująca napis w postaci znaków ASCI (1 znak -> trzy komórki)
             long[] ASCI;
+            char[] code;
             int i = 0, j = 0, tmp;
-            long n,p = 179425373, q =179425537;                                      // klucz prywatny, pobrany z biblioteki
+            long n, p = 179425373, q = 179425537;                                      // klucz prywatny, pobrany z biblioteki
             long e = 15486209;
-            n= p * q;                                                              // nie wiem dlaczego , ale bezpośrednia definicja "n" nie zadziałała (n nie wykracza poza zasięg long)
-            
+            n = p * q;                                                              // nie wiem dlaczego , ale bezpośrednia definicja "n" nie zadziałała (n nie wykracza poza zasięg long)
+
 
             int OriginalSize = napis.Length;                                        // rzeczywista liczba znaków
             int size = (1 + 3 * OriginalSize / 5) * 5;                              // rozmiar tablicy przechowującej napis w postaci znaków ASCI
             int sizeASCI = size / 5;                                                // rozmiar dwuwymiarowej tablicy szyfrującej
 
-            Console.WriteLine("\nSize = " + OriginalSize + "\tAcsi:" + size+"\tASCI:"+sizeASCI);       // sprawdzenie , do usunięcia
+            Console.WriteLine("\nSize = " + OriginalSize + "\tAcsi:" + size + "\tASCI:" + sizeASCI);       // sprawdzenie , do usunięcia
 
-            napisASCII = new int[size+2];                                             // stworzenie 3*n elementowej tablicy cyfr
+            napisASCII = new int[size + 2];                                             // stworzenie 3*n elementowej tablicy cyfr
 
 
             while (i < OriginalSize)
@@ -39,7 +40,7 @@ namespace ConsoleApplication3
                 i++;
             }
 
-            while (3 * i +3+ j < size)
+            while (3 * i + 3 + j < size)
             {
                 napisASCII[3 * i + j] = 0;
                 j++;
@@ -56,13 +57,20 @@ namespace ConsoleApplication3
 
             for (i = 0; i < sizeASCI; i++)
             {
-                ASCI[i] = napisASCII[i*5+4] + 10 * napisASCII[i*5 + 3] + 100 * napisASCII[i*5 + 2] + 1000 * napisASCII[i*5 + 1] + 10000 * napisASCII[5*i];
+                ASCI[i] = napisASCII[i * 5 + 4] + 10 * napisASCII[i * 5 + 3] + 100 * napisASCII[i * 5 + 2] + 1000 * napisASCII[i * 5 + 1] + 10000 * napisASCII[5 * i];
                 Console.Write("Przed:\t" + ASCI[i] + "\tPo:\t");
                 ASCI[i] = ((ASCI[i]) ^ e) % n;
-                Console.Write(ASCI[i]+"\n");
+                Console.Write(ASCI[i] + "\n");
             }
 
+            Console.Write("\n\nWynikiem programu jest tablica long zawierająca zakodowaną wiadomość:\n\n");
+            for (i = 0; i < sizeASCI; i++)
+                Console.Write(ASCI[i]);
+
+
+            Console.Write("\nKoniec\n");
 
         }
+
     }
 }
