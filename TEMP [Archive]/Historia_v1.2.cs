@@ -13,7 +13,7 @@
 
 using System;
 using System.IO;
-// Wtedy struktura funkji bedzie przebudowana 
+
 static void archive(string path_1, string path_2)//path_1 - archiwum, path_2 - wyjscie
 {
     String[] tmp_string = new String[100];
