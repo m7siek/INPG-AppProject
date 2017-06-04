@@ -1,8 +1,10 @@
 ﻿//Wersja do weryfikacji
 
-//Funkcja otwiera dwa pliki, historię i plik wyjsciowy
+//Funkcja archive otwiera dwa pliki, historię i plik wyjsciowy, na koniec usuwa plik wyjsciowy
 //laczy je w jeden, wpisujac tresc pliku wyjsciowego na poczatek histori
 //Przechowuje do 100 pozcji
+
+//Funkcja save_to_file tworzy nowy plik i zapisuje otrzymany string
 
 //Do ewentuanej zmiany: 
 //                      -nazwa pliku wyjsciowego dodana jako arument wywolania
@@ -30,8 +32,6 @@ static void archive()
 
         tmp_string[0] = sr2.ReadLine();
 
-        //Element testowy - do usuniecia
-        for (i = 0; i < 100; i++) Console.WriteLine(tmp_string[i]);
 
         //Zamknięcie obu plików
         sr1.Close();
@@ -39,6 +39,8 @@ static void archive()
 
         //Zapis do pliku archiwalnego
         File.WriteAllLines("sciezka do pliku archiwum", tmp_string);
+    File.Delete("sciezka do pliku wyjscia"); //Plik jest usuwany aby nie zasmiecac pamieci
+
 }
 static void save_to_file(string tekst)
 {
