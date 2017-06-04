@@ -19,8 +19,8 @@ static void archive()
     int i;
 
         // Otwarcie strumieni
-        StreamReader sr1 = new StreamReader("archive.txt");
-        StreamReader sr2 = new StreamReader("application_output.txt");
+        StreamReader sr1 = new StreamReader("sciezka do pliku archiwum");
+        StreamReader sr2 = new StreamReader("sciezka do pliku wyjscia");
 
         //Odczyt po jednej linijce
         for (i = 1; i < 100; i++)
@@ -38,12 +38,12 @@ static void archive()
         sr2.Close();
 
         //Zapis do pliku archiwalnego
-        File.WriteAllLines("archive.txt", tmp_string);
+        File.WriteAllLines("sciezka do pliku archiwum", tmp_string);
 }
 static void save_to_file(string tekst)
 {
-    File.Create("scieżka");
-    StreamReader sr1 = new StreamReader("ścieżka");
-    File.WriteAllLines("siezka", tekst);
+    File.Create("scieżka do pliku archiwum");
+    StreamReader sr1 = new StreamReader("sciezka do pliku archiwum");
+    File.WriteAllLines("sciezka do pliku archiwum", tekst);
     sr1.Close();
 }
