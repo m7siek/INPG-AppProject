@@ -40,3 +40,10 @@ static void archive()
         //Zapis do pliku archiwalnego
         File.WriteAllLines("archive.txt", tmp_string);
 }
+static void save_to_file(string tekst)
+{
+    File.Create("scieżka");
+    StreamReader sr1 = new StreamReader("ścieżka");
+    File.WriteAllLines("siezka", tekst);
+    sr1.Close();
+}
